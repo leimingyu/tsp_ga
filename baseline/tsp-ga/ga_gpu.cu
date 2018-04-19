@@ -315,7 +315,7 @@ int g_select_leader(World* pop, int pop_size, World* generation_leader,
 bool g_execute(float prob_mutation, float prob_crossover, int pop_size,
 	int max_gen, World* world, int seed)
 {
-	cudaSetDevice(2);
+	cudaSetDevice(0);
 	// Error checking variables
 	bool error;
 	
