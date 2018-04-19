@@ -2,11 +2,11 @@ CC = g++
 NVCC = nvcc -ccbin $(CC)
 CUDA_PATH = /usr/local/cuda
 CFLAGS = -L$(CUDA_PATH)/lib64 -lcudart -lcuda -lcurand -lm  
-NVCCFLAGS= -D_FORCE_INLINES -Xcompiler -fPIC  -I$(CUDA_SDK_PATH)/samples/common/inc
+NVCCFLAGS= -D_FORCE_INLINES -Xcompiler -fPIC  -I$(CUDA_SDK_PATH)/samples/common/inc -I/usr/local/cuda/include/
 COPTFLAGS = -O3 -g -std=c++11 
 LDFLAGS =
 
-SMS ?= 30 35 37 50 52 60 
+SMS ?= 30 35 37 50 52 60 70 
 
 ifeq ($(GENCODE_FLAGS),)                                                        
 $(foreach sm,$(SMS),$(eval GENCODE_FLAGS += -gencode arch=compute_$(sm),code=sm_$(sm)))

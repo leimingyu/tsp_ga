@@ -12,16 +12,18 @@ using namespace std;
 
 int main()
 {
+	cudaSetDevice(0);
+
 	// GA parameters
 	float prob_mutation  = (float)0.15; // The probability of a mutation
 	float prob_crossover = (float)0.8;  // The probability of a crossover
 	int world_seed       = 12438955;    // Seed for initial city selection
 	int ga_seed          = 87651111;    // Seed for all other random numbers
-	
+
 	// World parameters
 	int world_width  = 10000;
 	int world_height = 10000;
-	
+
 	// The test cases
 	int iterations          = 1;  // Number of full runs
 	const int num_cases     = 1; // How many trials to test
@@ -56,10 +58,10 @@ int main()
 			cudaDeviceReset(); // Clear
 
 			if(g_execute(prob_mutation, prob_crossover, pop_size, max_gen,world, ga_seed))
-				{
-					cout<<"GPU Related error - Could be an issue if GPU is being used by others"<<endl
-						<<"Please try running again when there is memory free + GPU is free"	<<endl;
-				}
+			{
+				cout<<"GPU Related error - Could be an issue if GPU is being used by others"<<endl
+					<<"Please try running again when there is memory free + GPU is free"	<<endl;
+			}
 
 		}
 
@@ -69,6 +71,6 @@ int main()
 
 		free_world(world);
 	}
-	
+
 	return 0;
 }
